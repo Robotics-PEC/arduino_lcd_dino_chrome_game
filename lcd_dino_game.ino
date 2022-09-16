@@ -74,7 +74,7 @@ void loop() {
   while (game_start) {
     if (nearest_tree < 0)
     {
-      randomSeed(analogRead(26));
+      randomSeed(analogRead(A0));
       nearest_tree = random(6,17);
     }
     did_jump = false;
