@@ -10,6 +10,7 @@ int Jump = 0;
 bool did_jump = false;
 int score = 0;
 int high_score = 0;
+int motion = 0;
 
 LiquidCrystal lcd(12, 11, 7, 6, 5, 4);
 
@@ -24,14 +25,24 @@ byte tree[8] = { 0B00100,
                  0B00100
                };
 
-byte dina[8] = { 0B00111,
-                 0B00100,
-                 0B00111,
-                 0B00100,
-                 0B00100,
-                 0B01100,
-                 0B10010,
-                 0B10010
+byte dina1[8] = { 0B00111,
+                  0B00100,
+                  0B00111,
+                  0B00100,
+                  0B00100,
+                  0B01100,
+                  0B10010,
+                  0B10000
+               };
+
+byte dina2[8] = { 0B00111,
+                  0B00100,
+                  0B00111,
+                  0B00100,
+                  0B00100,
+                  0B01100,
+                  0B10010,
+                  0B00010
                };
 
 void jump(){ if (game_start){
@@ -47,7 +58,8 @@ void jump(){ if (game_start){
 
 void setup() {
   lcd.createChar(0, tree);
-  lcd.createChar(1, dina);
+  lcd.createChar(1, dina1);
+  lcd.createChar(2, dina2);
   lcd.begin(16, 2);
   lcd.print("Press to start");
 
@@ -75,7 +87,14 @@ void loop() {
       lcd.setCursor(dinasour_position , 1);
     }
 
+    if(motion){
     lcd.write((uint8_t)1);
+    motion--;
+    }
+    else{
+      lcd.write((uint8_t)2);
+      motion++;
+    }
 
     lcd.setCursor(nearest_tree , 1);
     lcd.write((uint8_t)0);
@@ -90,14 +109,29 @@ void loop() {
       did_jump = false;
       game_start = 0;
       lcd.clear();
-      lcd.setCursor(0, 0);
-      lcd.print("Game Over");
-      delay(400);
+      lcd.setCursor(nearest_tree+1,1);
+      lcd.write((uint8_t)0);
+      lcd.setCursor(dinasour_position,1);
+      lcd.write((uint8_t)1);
+      delay(300);
       lcd.clear();
-      delay(400);
+      delay(600);
+      lcd.setCursor(nearest_tree+1,1);
+      lcd.write((uint8_t)0);
+      lcd.setCursor(dinasour_position,1);
+      lcd.write((uint8_t)1);
+      delay(600);
+      lcd.clear();
+      delay(500);
+      lcd.setCursor(nearest_tree+1,1);
+      lcd.write((uint8_t)0);
+      lcd.setCursor(dinasour_position,1);
+      lcd.write((uint8_t)1);
+      delay(600);
+      lcd.clear();
       lcd.setCursor(0, 0);
       lcd.print("Game Over");
-      delay(400);
+      delay(600);
       lcd.clear();
       delay(600);
       lcd.setCursor(0, 0);
@@ -106,14 +140,13 @@ void loop() {
       lcd.setCursor(0, 1);
       lcd.print("Score: ");
       lcd.print(score);
-      delay(1000);
+      delay(1500);
       lcd.clear();
       delay(400);
       lcd.setCursor(0, 0);
-      lcd.print("High Score: ");
-      lcd.print(high_score);
+      lcd.print("Press Again to");
       lcd.setCursor(0, 1);
-      lcd.print("Press Again");
+      lcd.print("Play");
       score =0;
       break;
     }
