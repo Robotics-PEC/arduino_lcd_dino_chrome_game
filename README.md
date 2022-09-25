@@ -5,7 +5,7 @@ This Repository contains a simple attempt at replicating the famous dinosaur gam
 # Sample Pictures
 
 ## DEMO 
-![Game running GIF](Images/dino1.gif)
+![Game running GIF](Images/dino.gif)
 ## This is the first screen you would see when you startup the code.
 
 ![Start Page](Images/START.png)
