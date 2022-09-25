@@ -5,7 +5,8 @@ This Repository contains a simple attempt at replicating the famous dinosaur gam
 # Sample Pictures
 
 ## DEMO 
-![Game running GIF](Images/dino.gif | height=500)
+<img src="https://github.com/shashankmarch27/arduino_lcd_dino_chrome_game/blob/main/Images/dino.gif" height="100">
+
 ## This is the first screen you would see when you startup the code.
 
 ![Start Page](Images/START.png)
